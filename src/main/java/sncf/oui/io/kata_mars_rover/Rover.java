@@ -21,6 +21,8 @@ public class Rover {
             return direction.get(facingDirection+1);
         if (movement.equals("RR"))
             return direction.get(facingDirection+2);
+        if (movement.equals("RRR"))
+            return direction.get(facingDirection+3);
 
         return direction.get(facingDirection);
     }
