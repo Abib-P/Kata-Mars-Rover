@@ -17,12 +17,11 @@ public class Rover {
     public char move(String movement) {
         if (movement == null || movement.isEmpty())
             return direction.get(facingDirection);
-        if (movement.equals("R"))
-            return direction.get(facingDirection+1);
-        if (movement.equals("RR"))
-            return direction.get(facingDirection+2);
-        if (movement.equals("RRR"))
-            return direction.get(facingDirection+3);
+        for (int i = 0 ; i < movement.length() ; i++) {
+            facingDirection++;
+            if(facingDirection > 3)
+                facingDirection = 0;
+        }
 
         return direction.get(facingDirection);
     }
