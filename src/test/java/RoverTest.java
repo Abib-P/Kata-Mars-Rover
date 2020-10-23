@@ -41,7 +41,18 @@ class RoverTest {
             "RRR,W",
             "RRRR,N"
     })
-    void should_value_to_direction_given_string(final String value, final Character expectedResponse) {
+    void should_value_to_direction_given_string_of_R(final String value, final Character expectedResponse) {
+
+        final var response = rover.move(value);
+
+        assertThat(response).isEqualTo(expectedResponse);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "L,W"
+    })
+    void should_value_to_direction_given_string_of_L(final String value, final Character expectedResponse) {
 
         final var response = rover.move(value);
 
