@@ -15,10 +15,12 @@ public class Rover {
     }
 
     public char move(String movement) {
-        if (movement == null)
+        if (movement == null || movement.isEmpty())
             return direction.get(facingDirection);
         if (movement.equals("R"))
             return direction.get(facingDirection+1);
+        if (movement.equals("RR"))
+            return direction.get(facingDirection+2);
 
         return direction.get(facingDirection);
     }
