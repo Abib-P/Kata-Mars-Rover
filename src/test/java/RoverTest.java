@@ -38,7 +38,8 @@ class RoverTest {
     @CsvSource({
             "R,E",
             "RR,S",
-            "RRR,W"
+            "RRR,W",
+            "RRRR,N"
     })
     void should_value_to_direction_given_string(final String value, final Character expectedResponse) {
 
