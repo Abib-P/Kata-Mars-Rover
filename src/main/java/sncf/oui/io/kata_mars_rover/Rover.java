@@ -21,6 +21,8 @@ public class Rover {
             return 'W';
         if (movement.equals("LL"))
             return 'S';
+        if (movement.equals("LLL"))
+            return 'E';
         for (int i = 0 ; i < movement.length() ; i++) {
             facingDirection++;
             if(facingDirection > 3)
