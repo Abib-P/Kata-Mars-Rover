@@ -50,7 +50,8 @@ class RoverTest {
 
     @ParameterizedTest
     @CsvSource({
-            "L,W"
+            "L,W",
+            "LL,S"
     })
     void should_value_to_direction_given_string_of_L(final String value, final Character expectedResponse) {
 
