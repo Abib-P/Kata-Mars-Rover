@@ -28,6 +28,8 @@ public class MarsMap {
             rover.setYPosition(height+ rover.getYPosition());
         if(movement.equals("RB"))
             rover.setXPosition(width+ rover.getXPosition());
+        if(movement.equals("LFF"))
+            rover.setXPosition(width+ rover.getXPosition());
         return rover.move(null)+":"+ rover.getXPosition()+":"+ rover.getYPosition();
     }
 }
