@@ -15,7 +15,7 @@ public class Rover {
     }
 
     public char move(String movement) {
-        if (movement == null || movement.isEmpty())
+        if (movement == null || movement.isEmpty() || movement.isBlank())
             return direction.get(facingDirection);
         for (int i = 0 ; i < movement.length() ; i++) {
             if(movement.toCharArray()[i] == 'L')
@@ -27,7 +27,6 @@ public class Rover {
             if(facingDirection > 3)
                 facingDirection = 0;
         }
-
         return direction.get(facingDirection);
     }
 }

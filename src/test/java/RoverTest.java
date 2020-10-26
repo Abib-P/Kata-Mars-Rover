@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import sncf.oui.io.kata_mars_rover.Rover;
@@ -23,15 +24,28 @@ class RoverTest {
         this.rover = new Rover();
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            " ,N"
-    })
-    void should_no_value_to_character_N_given_no_value(final String value, final Character expectedResponse) {
+    @Test
+    void should_not_change_orientation_given_null_command() {
 
-        final var response = rover.move(value);
+        final var response = rover.move(null);
 
-        assertThat(response).isEqualTo(expectedResponse);
+        assertThat(response).isEqualTo('N');
+    }
+
+    @Test
+    void should_not_change_orientation_given_empty_command() {
+
+        final var response = rover.move("");
+
+        assertThat(response).isEqualTo('N');
+    }
+
+    @Test
+    void should_not_change_orientation_given_blank_command() {
+
+        final var response = rover.move("   ");
+
+        assertThat(response).isEqualTo('N');
     }
 
     @ParameterizedTest
@@ -41,7 +55,7 @@ class RoverTest {
             "RRR,W",
             "RRRR,N"
     })
-    void should_value_to_direction_given_string_of_R(final String value, final Character expectedResponse) {
+    void should_turn_right_given_R_command(final String value, final Character expectedResponse) {
 
         final var response = rover.move(value);
 
@@ -52,9 +66,10 @@ class RoverTest {
     @CsvSource({
             "L,W",
             "LL,S",
-            "LLL,E"
+            "LLL,E",
+            "LLLL,N"
     })
-    void should_value_to_direction_given_string_of_L(final String value, final Character expectedResponse) {
+    void should_turn_left_given_L_command(final String value, final Character expectedResponse) {
 
         final var response = rover.move(value);
 
@@ -65,7 +80,7 @@ class RoverTest {
     @CsvSource({
             "LLLRRLRL,S"
     })
-    void should_value_to_direction_given_string_of_L_and_R(final String value, final Character expectedResponse) {
+    void should_face_the_right_direction_given_complex_command(final String value, final Character expectedResponse) {
 
         final var response = rover.move(value);
 
