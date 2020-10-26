@@ -23,6 +23,10 @@ public class MarsMap {
     }
 
     public String moveRover(String movement) {
-        return rover.move(movement)+":"+ rover.getXPosition()+":"+ rover.getYPosition();
+        rover.move(movement);
+        rover.setYPosition(width+ rover.getYPosition());
+
+
+        return rover.move(null)+":"+ rover.getXPosition()+":"+ rover.getYPosition();
     }
 }
