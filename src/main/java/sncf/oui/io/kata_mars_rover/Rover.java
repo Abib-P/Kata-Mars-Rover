@@ -22,6 +22,15 @@ public class Rover{
         yPosition = 0;
     }
 
+    public Rover(Rover newRover){
+        facingDirection = newRover.facingDirection;
+
+        direction = newRover.direction;
+
+        xPosition = newRover.xPosition;
+        yPosition = newRover.yPosition;
+    }
+
     public char move(String movement) {
         if (movement == null || movement.isEmpty() || movement.isBlank())
             return direction.get(facingDirection);
