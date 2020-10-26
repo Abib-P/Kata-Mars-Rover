@@ -38,4 +38,11 @@ public class Rover{
         return direction.get(facingDirection);
     }
 
+    public int getxPosition() {
+        return xPosition;
+    }
+
+    public int getyPosition() {
+        return yPosition;
+    }
 }

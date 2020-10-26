@@ -9,6 +9,6 @@ public class MarsMap {
     }
 
     public String moveRover(String value) {
-        return null;
+        return rover.move(null)+":0:1";
     }
 }
