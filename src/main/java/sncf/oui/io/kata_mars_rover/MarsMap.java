@@ -24,12 +24,17 @@ public class MarsMap {
 
     public String moveRover(String movement) {
         rover.move(movement);
-        if(movement.equals("B"))
-            rover.setYPosition(height+ rover.getYPosition());
-        if(movement.equals("RB"))
-            rover.setXPosition(width+ rover.getXPosition());
-        if(movement.equals("LFF"))
-            rover.setXPosition(width+ rover.getXPosition());
+
+        while(rover.getYPosition() >= height)
+            rover.setYPosition(rover.getYPosition() - height);
+        while(rover.getYPosition() < 0)
+            rover.setYPosition(rover.getYPosition() + height);
+
+        while(rover.getXPosition() >= width)
+            rover.setXPosition(rover.getXPosition() - width);
+        while(rover.getXPosition() < 0)
+            rover.setXPosition(rover.getXPosition() + width);
+
         return rover.move(null)+":"+ rover.getXPosition()+":"+ rover.getYPosition();
     }
 }
