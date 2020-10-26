@@ -36,4 +36,15 @@ public class MarsMapTest {
         assertThat(response).isEqualTo(expectedResponse);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "B,N:0:-1"
+    })
+    void should_be_moving_backward_given_B_command(final String value, final String expectedResponse) {
+
+        final var response = marsMap.moveRover(value);
+
+        assertThat(response).isEqualTo(expectedResponse);
+    }
+
 }
