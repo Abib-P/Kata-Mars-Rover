@@ -31,27 +31,33 @@ public class Rover{
         yPosition = newRover.yPosition;
     }
 
-    public char move(String movement) {
-        if (movement == null || movement.isEmpty() || movement.isBlank())
+    public void resetRover(Rover newRover){
+        facingDirection = newRover.facingDirection;
+
+        xPosition = newRover.xPosition;
+        yPosition = newRover.yPosition;
+    }
+
+    public char move(Character movement) {
+        if (movement == null)
             return direction.get(facingDirection);
-        for (int i = 0 ; i < movement.length() ; i++) {
-            if(movement.charAt(i) == 'L')
+
+            if(movement == 'L')
                 facingDirection--;
-            if(movement.charAt(i) == 'R')
+            if(movement == 'R')
                 facingDirection++;
-            if((movement.charAt(i) == 'F' && direction.get(facingDirection) == 'N') || (movement.charAt(i) == 'B' && direction.get(facingDirection) == 'S'))
+            if((movement == 'F' && direction.get(facingDirection) == 'N') || (movement == 'B' && direction.get(facingDirection) == 'S'))
                 yPosition++;
-            if((movement.charAt(i) == 'F' && direction.get(facingDirection) == 'E') || (movement.charAt(i) == 'B' && direction.get(facingDirection) == 'W'))
+            if((movement == 'F' && direction.get(facingDirection) == 'E') || (movement == 'B' && direction.get(facingDirection) == 'W'))
                 xPosition++;
-            if((movement.charAt(i) == 'F' && direction.get(facingDirection) == 'S') || (movement.charAt(i) == 'B' && direction.get(facingDirection) == 'N'))
+            if((movement == 'F' && direction.get(facingDirection) == 'S') || (movement == 'B' && direction.get(facingDirection) == 'N'))
                 yPosition--;
-            if((movement.charAt(i) == 'F' && direction.get(facingDirection) == 'W') || (movement.charAt(i) == 'B' && direction.get(facingDirection) == 'E'))
+            if((movement == 'F' && direction.get(facingDirection) == 'W') || (movement == 'B' && direction.get(facingDirection) == 'E'))
                 xPosition--;
             if(facingDirection < 0)
                 facingDirection = 3;
             if(facingDirection > 3)
                 facingDirection = 0;
-        }
         return direction.get(facingDirection);
     }
 
