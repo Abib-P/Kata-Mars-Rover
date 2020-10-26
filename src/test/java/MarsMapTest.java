@@ -12,7 +12,11 @@ public class MarsMapTest {
 
     @BeforeEach
     void setup() {
-        this.marsMap = new MarsMap(5,5);
+        boolean map[][];
+        map = new boolean[5][5];
+        map[0][1] = true;
+        map[2][2] = true;
+        this.marsMap = new MarsMap(5,5,map);
     }
 
     @Test
@@ -25,11 +29,9 @@ public class MarsMapTest {
 
     @ParameterizedTest
     @CsvSource({
-            "B,N:0:4",
-            "RB,E:4:0",
-            "LFF,W:3:0"
+            "F,N:0:0"
     })
-    void should_be_moving_backward_given_B_command(final String value, final String expectedResponse) {
+    void should_not_be_moving_forward_given_F_command(final String value, final String expectedResponse) {
 
         final var response = marsMap.moveRover(value);
 
