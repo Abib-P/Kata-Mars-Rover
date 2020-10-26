@@ -20,7 +20,7 @@ public class MarsMapTest {
 
         final var response = marsMap.moveRover("LLFFFRBB");
 
-        assertThat(response).isEqualTo("E:0:5");
+        assertThat(response).isEqualTo("W:2:-3");
     }
 
     @ParameterizedTest
@@ -40,7 +40,8 @@ public class MarsMapTest {
     @CsvSource({
             "B,N:0:-1",
             "RB,E:-1:0",
-            "LBB,W:2:0"
+            "LBB,W:2:0",
+            "LLBLB,E:-1:1"
     })
     void should_be_moving_backward_given_B_command(final String value, final String expectedResponse) {
 
