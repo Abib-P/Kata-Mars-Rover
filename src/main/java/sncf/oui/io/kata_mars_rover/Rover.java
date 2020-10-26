@@ -53,4 +53,12 @@ public class Rover{
     public int getYPosition() {
         return yPosition;
     }
+
+    public void setXPosition(int newXPosition) {
+        xPosition = newXPosition;
+    }
+
+    public void setYPosition(int newYPosition) {
+        yPosition = newYPosition;
+    }
 }
