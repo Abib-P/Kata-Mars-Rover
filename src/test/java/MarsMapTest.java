@@ -12,7 +12,7 @@ public class MarsMapTest {
 
     @BeforeEach
     void setup() {
-        this.marsMap = new MarsMap();
+        this.marsMap = new MarsMap(5,5);
     }
 
     @Test
@@ -20,28 +20,12 @@ public class MarsMapTest {
 
         final var response = marsMap.moveRover("LLFFFRBB");
 
-        assertThat(response).isEqualTo("W:2:-3");
+        assertThat(response).isEqualTo("W:3:2");
     }
 
     @ParameterizedTest
     @CsvSource({
-            "F,N:0:1",
-            "RF,E:1:0",
-            "LFF,W:-2:0"
-    })
-    void should_be_moving_forward_given_F_command(final String value, final String expectedResponse) {
-
-        final var response = marsMap.moveRover(value);
-
-        assertThat(response).isEqualTo(expectedResponse);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "B,N:0:-1",
-            "RB,E:-1:0",
-            "LBB,W:2:0",
-            "LLBLB,E:-1:1"
+            "B,N:0:5"
     })
     void should_be_moving_backward_given_B_command(final String value, final String expectedResponse) {
 
