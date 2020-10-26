@@ -30,6 +30,14 @@ public class Rover{
                 facingDirection--;
             if(movement.charAt(i) == 'R')
                 facingDirection++;
+            if(movement.charAt(i) == 'F' && direction.get(facingDirection) == 'N')
+                yPosition++;
+            if(movement.charAt(i) == 'F' && direction.get(facingDirection) == 'E')
+                xPosition++;
+            if(movement.charAt(i) == 'F' && direction.get(facingDirection) == 'S')
+                yPosition--;
+            if(movement.charAt(i) == 'F' && direction.get(facingDirection) == 'W')
+                xPosition--;
             if(facingDirection < 0)
                 facingDirection = 3;
             if(facingDirection > 3)
