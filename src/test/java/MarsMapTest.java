@@ -29,7 +29,8 @@ public class MarsMapTest {
 
     @ParameterizedTest
     @CsvSource({
-            "F,N:0:0"
+            "F,N:0:0",
+            "RFFLFF,N:2:1"
     })
     void should_not_be_moving_forward_given_F_command(final String value, final String expectedResponse) {
 
