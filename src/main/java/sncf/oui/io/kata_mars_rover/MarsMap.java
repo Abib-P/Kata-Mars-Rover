@@ -28,20 +28,25 @@ public class MarsMap {
     }
 
     public String moveRover(String movement) {
-        rover.move(movement);
 
-        while(rover.getYPosition() >= height)
-            rover.setYPosition(rover.getYPosition() - height);
-        while(rover.getYPosition() < 0)
-            rover.setYPosition(rover.getYPosition() + height);
+        for(int i = 0 ; i < movement.length() ; i++)
+        {
+            Rover oldRover = new Rover(rover);
+            rover.move(movement.charAt(i));
 
-        while(rover.getXPosition() >= width)
-            rover.setXPosition(rover.getXPosition() - width);
-        while(rover.getXPosition() < 0)
-            rover.setXPosition(rover.getXPosition() + width);
+            if(rover.getYPosition() >= height)
+                rover.setYPosition(rover.getYPosition() - height);
+            if(rover.getYPosition() < 0)
+                rover.setYPosition(rover.getYPosition() + height);
 
-        if(map[rover.getXPosition()][rover.getYPosition()])
-            rover.setYPosition(rover.getYPosition()-1);
+            if(rover.getXPosition() >= width)
+                rover.setXPosition(rover.getXPosition() - width);
+            if(rover.getXPosition() < 0)
+                rover.setXPosition(rover.getXPosition() + width);
+
+            if(map[rover.getXPosition()][rover.getYPosition()])
+                rover.resetRover(oldRover);
+        }
 
         return rover.move(null)+":"+ rover.getXPosition()+":"+ rover.getYPosition();
     }
