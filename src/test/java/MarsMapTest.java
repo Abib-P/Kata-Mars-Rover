@@ -39,7 +39,8 @@ public class MarsMapTest {
     @ParameterizedTest
     @CsvSource({
             "B,N:0:-1",
-            "RB,E:-1:0"
+            "RB,E:-1:0",
+            "LBB,W:2:0"
     })
     void should_be_moving_backward_given_B_command(final String value, final String expectedResponse) {
 
