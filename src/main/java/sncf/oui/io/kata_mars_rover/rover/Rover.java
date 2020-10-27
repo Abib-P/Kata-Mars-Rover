@@ -1,4 +1,4 @@
-package sncf.oui.io.kata_mars_rover;
+package sncf.oui.io.kata_mars_rover.rover;
 
 import java.util.HashMap;
 
