@@ -24,7 +24,7 @@ public class MarsMapTest {
 
         final var response = marsMap.moveRover("LLFFFRBB");
 
-        assertThat(response).isEqualTo("W:2:2");
+        assertThat(response).isEqualTo("W:1:2");
     }
 
     @ParameterizedTest
