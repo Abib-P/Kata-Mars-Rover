@@ -1,14 +1,18 @@
-package sncf.oui.io.kata_mars_rover;
+package sncf.oui.io.kata_mars_rover.marsmap;
 
-import java.util.ArrayList;
-import java.util.List;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacle;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacleRock;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacleXSlide;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacleYSlide;
+import sncf.oui.io.kata_mars_rover.rover.Rover;
+
 import java.util.Random;
 
 public class MarsMap {
     private final Rover rover;
     private final int width;
     private final int height;
-    private final boolean map[][];
+    private final MarsObstacle[][] map;
 
     public MarsMap()
     {
@@ -16,10 +20,10 @@ public class MarsMap {
         Random r = new Random();
         width = r.nextInt(15 + 1) + 5;
         height = r.nextInt(15 + 1) + 5;
-        map = new boolean[width][height];
+        map = new MarsObstacle[width][height];
     }
 
-    public MarsMap(int newWidth, int newHeight, boolean[][] obstacle)
+    public MarsMap(int newWidth, int newHeight, MarsObstacle[][] obstacle)
     {
         rover = new Rover();
         width = newWidth;
@@ -44,8 +48,15 @@ public class MarsMap {
             if(rover.getXPosition() < 0)
                 rover.setXPosition(rover.getXPosition() + width);
 
-            if(map[rover.getXPosition()][rover.getYPosition()])
+            if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleRock) {
                 rover.resetRover(oldRover);
+            }
+            else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleXSlide){
+
+            }else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleYSlide){
+
+            }
+
         }
 
         return rover.move(null)+":"+ rover.getXPosition()+":"+ rover.getYPosition();
