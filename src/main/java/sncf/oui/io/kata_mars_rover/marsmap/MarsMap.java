@@ -65,7 +65,7 @@ public class MarsMap {
             Rover oldRover = new Rover(rover);
             rover.move(movement.charAt(i));
 
-            replaceRover();
+            putBackRover();
 
             do{
 
@@ -95,7 +95,7 @@ public class MarsMap {
                     }
 
                 }
-                replaceRover();
+                putBackRover();
 
             }while (map[rover.getXPosition()][rover.getYPosition()] != null);
 
@@ -104,7 +104,7 @@ public class MarsMap {
         return rover.move(null)+":"+ rover.getXPosition()+":"+ rover.getYPosition();
     }
 
-    private void replaceRover() {
+    private void putBackRover() {
 
         if (rover.getYPosition() >= height)
             rover.setYPosition(rover.getYPosition() - height);
@@ -131,7 +131,7 @@ public class MarsMap {
             System.out.print("║");
             for(int x = 0 ; x < width ; x++){
                 if(rover.getXPosition() == x && rover.getYPosition() == y){
-                    System.out.print("R");
+                    System.out.print(rover.move(null));
                 }
                 else if(map[x][y] instanceof MarsObstacleRock){
                     System.out.print("▓");
