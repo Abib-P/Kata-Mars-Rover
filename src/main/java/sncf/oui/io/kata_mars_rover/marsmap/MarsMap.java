@@ -47,19 +47,34 @@ public class MarsMap {
                 rover.setXPosition(rover.getXPosition() - width);
             if(rover.getXPosition() < 0)
                 rover.setXPosition(rover.getXPosition() + width);
+
             do{
+
             if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleRock) {
                 rover.resetRover(oldRover);
-            }else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleXSlide){
-                if (((MarsObstacleXSlide) map[rover.getXPosition()][rover.getYPosition()]).getSlideDirection() > 0)
-                    rover.setXPosition(rover.getXPosition()+1);
-                else
-                    rover.setXPosition(rover.getXPosition()-1);
+                break;
+            }else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleXSlide) {
+
+                if (((MarsObstacleXSlide) map[rover.getXPosition()][rover.getYPosition()]).getSlideDirection() > 0){
+                    oldRover = new Rover(rover);
+                    rover.setXPosition(rover.getXPosition() + 1);
+                }
+                else {
+                    oldRover = new Rover(rover);
+                    rover.setXPosition(rover.getXPosition() - 1);
+                }
+
             }else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleYSlide){
-                if (((MarsObstacleYSlide) map[rover.getXPosition()][rover.getYPosition()]).getSlideDirection() > 0)
-                    rover.setYPosition(rover.getYPosition()+1);
-                else
-                    rover.setYPosition(rover.getYPosition()-1);
+
+                if (((MarsObstacleYSlide) map[rover.getXPosition()][rover.getYPosition()]).getSlideDirection() > 0) {
+                    oldRover = new Rover(rover);
+                    rover.setYPosition(rover.getYPosition() + 1);
+                }
+                else {
+                    oldRover = new Rover(rover);
+                    rover.setYPosition(rover.getYPosition() - 1);
+                }
+
             }
                 if(rover.getYPosition() >= height)
                     rover.setYPosition(rover.getYPosition() - height);
@@ -70,6 +85,7 @@ public class MarsMap {
                     rover.setXPosition(rover.getXPosition() - width);
                 if(rover.getXPosition() < 0)
                     rover.setXPosition(rover.getXPosition() + width);
+
             }while (map[rover.getXPosition()][rover.getYPosition()] != null);
 
         }

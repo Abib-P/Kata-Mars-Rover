@@ -57,4 +57,12 @@ class MarsMapTest {
 
         assertThat(response).isEqualTo("E:3:4");
     }
+
+    @Test
+    void should_stay_on_MarsObstacleYSlide_when_block_by_MarsObstacleRock() {
+
+        final var response = marsMap.moveRover("RFFLF");
+
+        assertThat(response).isEqualTo("N:2:1");
+    }
 }
