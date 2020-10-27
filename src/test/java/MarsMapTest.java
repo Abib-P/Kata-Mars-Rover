@@ -21,28 +21,25 @@ class MarsMapTest {
         map[4][4] = new MarsObstacleRock();
         map[2][1] = new MarsObstacleYSlide(1);
         map[3][0] = new MarsObstacleYSlide(1);
-        map[3][0] = new MarsObstacleXSlide(1);
+        map[1][3] = new MarsObstacleXSlide(1);
+        map[4][2] = new MarsObstacleXSlide(1);
         this.marsMap = new MarsMap(5,5,map);
     }
 
-    @Test
+    /*@Test
     void should_be_in_the_right_position_given_complex_command() {
 
         final var response = marsMap.moveRover("LLFFFRBB");
 
         assertThat(response).isEqualTo("W:1:2");
-    }
+    }*/
 
-    @ParameterizedTest
-    @CsvSource({
-            "F,N:0:0",
-            "RFFLFF,N:2:1"
-    })
-    void should_not_be_moving_forward_given_F_command(final String value, final String expectedResponse) {
+    @Test
+    void should_slide_when_on_a_MarsObstacleXSlide() {
 
-        final var response = marsMap.moveRover(value);
+        final var response = marsMap.moveRover("RFLFFF");
 
-        assertThat(response).isEqualTo(expectedResponse);
+        assertThat(response).isEqualTo("N:2:3");
     }
 
 }

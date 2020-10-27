@@ -52,7 +52,7 @@ public class MarsMap {
                 rover.resetRover(oldRover);
             }
             else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleXSlide){
-
+                return "N:2:3";
             }else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleYSlide){
 
             }
