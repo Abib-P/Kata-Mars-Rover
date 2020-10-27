@@ -20,9 +20,9 @@ class MarsMapTest {
         map[2][2] = new MarsObstacleRock();
         map[4][4] = new MarsObstacleRock();
         map[2][1] = new MarsObstacleYSlide(1);
-        map[3][0] = new MarsObstacleYSlide(1);
+        map[3][0] = new MarsObstacleYSlide(-1);
         map[1][3] = new MarsObstacleXSlide(1);
-        map[4][2] = new MarsObstacleXSlide(1);
+        map[4][2] = new MarsObstacleXSlide(-1);
         this.marsMap = new MarsMap(5,5,map);
     }
 
@@ -42,4 +42,19 @@ class MarsMapTest {
         assertThat(response).isEqualTo("N:2:3");
     }
 
+    @Test
+    void should_slide_to_the_right_direction_when_on_a_MarsObstacleXSlide() {
+
+        final var response = marsMap.moveRover("RFLFFFRFFLB");
+
+        assertThat(response).isEqualTo("N:3:2");
+    }
+
+    @Test
+    void should_stay_in_the_grid_when_on_a_MarsObstacleYSlide() {
+
+        final var response = marsMap.moveRover("RFFF");
+
+        assertThat(response).isEqualTo("E:3:4");
+    }
 }

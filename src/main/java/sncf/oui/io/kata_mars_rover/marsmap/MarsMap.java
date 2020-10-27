@@ -47,15 +47,30 @@ public class MarsMap {
                 rover.setXPosition(rover.getXPosition() - width);
             if(rover.getXPosition() < 0)
                 rover.setXPosition(rover.getXPosition() + width);
-
+            do{
             if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleRock) {
                 rover.resetRover(oldRover);
-            }
-            else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleXSlide){
-                return "N:2:3";
+            }else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleXSlide){
+                if (((MarsObstacleXSlide) map[rover.getXPosition()][rover.getYPosition()]).getSlideDirection() > 0)
+                    rover.setXPosition(rover.getXPosition()+1);
+                else
+                    rover.setXPosition(rover.getXPosition()-1);
             }else if(map[rover.getXPosition()][rover.getYPosition()] instanceof MarsObstacleYSlide){
-
+                if (((MarsObstacleYSlide) map[rover.getXPosition()][rover.getYPosition()]).getSlideDirection() > 0)
+                    rover.setYPosition(rover.getYPosition()+1);
+                else
+                    rover.setYPosition(rover.getYPosition()-1);
             }
+                if(rover.getYPosition() >= height)
+                    rover.setYPosition(rover.getYPosition() - height);
+                if(rover.getYPosition() < 0)
+                    rover.setYPosition(rover.getYPosition() + height);
+
+                if(rover.getXPosition() >= width)
+                    rover.setXPosition(rover.getXPosition() - width);
+                if(rover.getXPosition() < 0)
+                    rover.setXPosition(rover.getXPosition() + width);
+            }while (map[rover.getXPosition()][rover.getYPosition()] != null);
 
         }
 
