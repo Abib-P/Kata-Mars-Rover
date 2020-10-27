@@ -2,20 +2,26 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sncf.oui.io.kata_mars_rover.MarsMap;
-import sncf.oui.io.kata_mars_rover.Rover;
+import sncf.oui.io.kata_mars_rover.marsmap.MarsMap;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacle;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacleRock;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacleXSlide;
+import sncf.oui.io.kata_mars_rover.marsobstacle.MarsObstacleYSlide;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class MarsMapTest {
+class MarsMapTest {
     private MarsMap marsMap;
 
     @BeforeEach
     void setup() {
-        boolean map[][];
-        map = new boolean[5][5];
-        map[0][1] = true;
-        map[2][2] = true;
+        MarsObstacle[][] map = new MarsObstacle[5][5];
+        map[0][1] = new MarsObstacleRock();
+        map[2][2] = new MarsObstacleRock();
+        map[4][4] = new MarsObstacleRock();
+        map[2][1] = new MarsObstacleYSlide(1);
+        map[3][0] = new MarsObstacleYSlide(1);
+        map[3][0] = new MarsObstacleXSlide(1);
         this.marsMap = new MarsMap(5,5,map);
     }
 
