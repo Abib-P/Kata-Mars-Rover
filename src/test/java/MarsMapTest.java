@@ -26,13 +26,13 @@ class MarsMapTest {
         this.marsMap = new MarsMap(5,5,map);
     }
 
-    /*@Test
+    @Test
     void should_be_in_the_right_position_given_complex_command() {
 
-        final var response = marsMap.moveRover("LLFFFRBB");
+        final var response = marsMap.moveRover("FFRBBFRFFFRFFRFF");
 
-        assertThat(response).isEqualTo("W:1:2");
-    }*/
+        assertThat(response).isEqualTo("N:2:3");
+    }
 
     @Test
     void should_slide_when_on_a_MarsObstacleXSlide() {
